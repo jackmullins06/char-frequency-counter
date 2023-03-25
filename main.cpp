@@ -4,10 +4,20 @@
 std::string promptForInput() {
     std::string input;
 
-    std::cout << "Please enter a string: " << std::endl;
-    std::getline(std::cin, input);
+    while (true) {
+        std::cout << "Please enter a string: " << std::endl;
+        std::getline(std::cin, input);
 
-    return input;}
+        if (!input.empty()) {
+            break;
+        }
+
+        std::cout << "Invalid input. Please try again." << std::endl;
+    }
+
+    return input;
+}
+
 
 std::map<char, int> countFrequency(std::string input) {
     std::map<char, int> letterFrequency;
@@ -28,7 +38,7 @@ void iterateThroughMap(std::map<char, int> letterFrequency) {
         char letter = it->first;
         int count = it->second;
 
-        std::cout << letter << ": " << count << std::endl;
+        std::cout << letter << " : " << count << std::endl;
 
         it++;
     }
